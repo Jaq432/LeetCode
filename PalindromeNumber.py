@@ -1,4 +1,4 @@
-def isPalindrome(self, x):
+def isPalindrome(x):
     """
     :type x: int
     :rtype: bool
@@ -11,3 +11,6 @@ def isPalindrome(self, x):
     # Could also do this
     # Faster running, worse memory
     # return str(x) == str(x)[::-1]
+
+print(isPalindrome(121)) # true
+print(isPalindrome(122)) # false
