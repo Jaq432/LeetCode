@@ -3,10 +3,17 @@ def isPalindrome(x):
     :type x: int
     :rtype: bool
     """
-    # Convert the int to a str
+    print(f"Trying {x}")
     inputText = str(x)
+    halfLength = len(inputText) // 2
+    for i in range(halfLength):
+        if inputText[i] != inputText[-i-1]:
+            return False
+    return True
 
-    return inputText == inputText[::-1]
+    # Convert the int to a str
+    #inputText = str(x)
+    #return inputText == inputText[::-1]
 
     # Could also do this
     # Faster running, worse memory
