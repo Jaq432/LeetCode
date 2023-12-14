@@ -46,6 +46,5 @@ print(isValid("()[]{}")) # true
 print(isValid("(]")) # false
 print(isValid("[()]{}")) # true
 print(isValid("([]{})")) # true
-
 print(isValid("([)]")) # should be false
 # if an outer parenthesis is closed before an inner, it will cause an issue
