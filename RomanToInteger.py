@@ -20,12 +20,12 @@ def romanToInt(s):
         for letter in reverseInput:
             # First pass
             if rollingTotal == 0:
-                  rollingTotal += romanDict[letter]
-                  previousValue = romanDict[letter]
-                  continue
+                rollingTotal += romanDict[letter]
+                previousValue = romanDict[letter]
+                continue
             if romanDict[letter] < previousValue:
-                  rollingTotal -= romanDict[letter]
-                  continue
+                rollingTotal -= romanDict[letter]
+                continue
             rollingTotal += romanDict[letter]
             previousValue = romanDict[letter]
 
