@@ -5,7 +5,9 @@ logs = [
 "ERROR disk full",
 "ERROR timeout",
 "INFO health check",
-"ERROR timeout"
+"ERROR timeout",
+"ERROR another one",
+"ERROR disk full"
 ]
 
 logCounts = {}
@@ -19,5 +21,5 @@ for log in logs:
 
 sortedLogCounts = dict(sorted(logCounts.items(), key=lambda x:x[1], reverse=True))
 
-print(logCounts)
+#print(logCounts)
 print(sortedLogCounts)
