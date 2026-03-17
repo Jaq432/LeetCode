@@ -23,19 +23,21 @@ def longestBalancedSubstring(s: str) -> int:
 
 
 def longestBalanced(s: str) -> int:
-        # get the length of the string
-        sLen = len(s)
-        # initialize return var
-        longestBalancedLength = 0
-        for i in range(sLen):
-            letterCountDict = defaultdict(int)
-            for j in range(i, sLen):
-                letterCountDict[s[j]] += 1
-                if len(set(letterCountDict.values())) == 1:
-                    longestBalancedLength = max(longestBalancedLength, j - i + 1)
-        return longestBalancedLength
+    sLen = len(s)
+    longestStringNum = 0
+    for i in range(sLen):
+        holdingDict = defaultdict(int)
+        for j in range(i,sLen):
+            holdingDict[s[j]] += 1
+        if len(set(holdingDict.values())) == 1:
+            longestStringNum = max(longestStringNum, j-i+1)
+    return longestStringNum
 
 
+
+print(longestBalanced("abbac"))     # 4
+print(longestBalanced("zzabccy"))   # 4
+print(longestBalanced("aba"))       # 4
 
 '''
 def longestBalanced(s: str) -> int:
