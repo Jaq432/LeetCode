@@ -22,8 +22,8 @@ def twoSum(numbers: list[int], target: int) -> list[int]:
     while leftPointer < rightPointer:
         currentValue = numbers[leftPointer] + numbers[rightPointer]
         if currentValue == target:
-            return [leftPointer+1, rightPointer+1
-        if currentValue < target:]
+            return [leftPointer+1, rightPointer+1]
+        if currentValue < target:
             leftPointer += 1
         if currentValue > target:
             rightPointer -= 1
