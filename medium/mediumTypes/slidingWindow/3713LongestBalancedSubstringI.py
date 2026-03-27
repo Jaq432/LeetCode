@@ -8,6 +8,26 @@ Return the length of the longest balanced substring of s.
 from collections import defaultdict
 
 
+def longestBalancedString2(s: str) -> int:
+    slen = len(s)
+    longestLen = 0
+    pointer1 = 0
+    pointer2 = 0
+    for i in range(slen):
+        while 
+
+
+
+
+
+
+
+
+
+
+
+
+
 def longestBalancedSubstring(s: str) -> int:
     sLen = len(s)
     longestBalancedLength = 0
@@ -15,8 +35,8 @@ def longestBalancedSubstring(s: str) -> int:
         letterCountDict = defaultdict(int)
         for j in range(i,sLen):
             letterCountDict[s[j]] += 1
-            if len(set(letterCountDict.values())) == 1:
-                longestBalancedLength = max(longestBalancedLength, j-i+1)
+        if len(set(letterCountDict.values())) == 1:
+            longestBalancedLength = max(longestBalancedLength, j-i+1)
     return longestBalancedLength
 
 
