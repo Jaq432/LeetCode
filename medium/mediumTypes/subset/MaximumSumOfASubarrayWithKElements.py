@@ -10,6 +10,19 @@ Explanation : We get maximum sum by adding subarray [4, 2, 10, 23] of size 4.
 
 def maxSum(arr: list[int], subLength: int) -> int:
     arrlen = len(arr)
+    maxSum = 0
+    for i in range(arrlen-subLength):
+        currentSum = 0
+        for j in range(subLength):
+            currentSum += arr[i+j]
+        maxSum = max(maxSum, currentSum)
+
+    return maxSum
+
+
+
+def maxSum2(arr: list[int], subLength: int) -> int:
+    arrlen = len(arr)
     largestSum = 0
     for i in range(arrlen-subLength+1):
         currentSum = 0
