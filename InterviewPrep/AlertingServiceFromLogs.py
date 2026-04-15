@@ -17,6 +17,38 @@ LOGS = [
 
 THRESHOLD = 3
 WINDOW_SECONDS = 60
+
+def logParser(log):
+    logPieces = log.split(" ", 3)
+    logTimestamp = datetime.strptime(logPieces[0], "%Y-%m-%dT%H:%M:%SZ")
+    logService = logPieces[1]
+    logStatus = logPieces[2]
+    return logTimestamp, logService, logStatus
+
+def detect_error_spikes(logs):
+    logData = defaultdict(deque)
+    alertingServices = set()
+
+    for log in logs:
+        curLogTimestamp, curLogService, curLogStatus = logParser(log)
+
+        if curLogStatus != "ERROR":
+            continue
+
+        curLogWindow = logData[curLogService]
+
+        curLogWindow.append(curLogTimestamp)
+
+        # while there's a window and there's results outside the window
+        while curLogWindow and (curLogWindow[0] - curLogTimestamp) > timedelta(WINDOW_SECONDS):
+            curLogWindow.popleft()
+
+        if len(curLogWindow) >= THRESHOLD:
+            alertingServices.add(curLogService)
+
+    return alertingServices
+
+
 '''
 def parse_log(line):
     logParts = line.split(" ",3)
@@ -27,7 +59,7 @@ def parse_log(line):
 '''
 
 # Gets the time, service name, and log type
-def parse_log(line):
+def parse_log2(line):
     logParts = line.split(" ", 3)
     logTime = datetime.strptime(logParts[0], "%Y-%m-%dT%H:%M:%SZ")
     logService = logParts[1]
@@ -35,7 +67,7 @@ def parse_log(line):
     return logTime, logService, logType
 
 # Take the list of logs and find out if they are in alarm
-def detect_error_spikes(logs):
+def detect_error_spikes2(logs):
     currentLogs = defaultdict(deque)
     alertingServices = set()
 

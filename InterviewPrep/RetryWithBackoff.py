@@ -1,6 +1,6 @@
 import time
 
-ERROR_RESPONSES = {
+ERROR_RESPONSES = [
     200,
     200,
     300,
@@ -9,9 +9,21 @@ ERROR_RESPONSES = {
     500,
     400,
     200,
-}
+]
+
+RETRY_COUNT = 3
 
 def request_and_limit_service(response):
+    returnResponse = 0
+    print(f"Request response: {response}")
+    if response != 200 and response != 300:
+        for i in range(1,RETRY_COUNT+1):
+            print(f"Retrying request. Retry count {i}")
+            time.sleep(2**i)
+            if returnResponse == "200" or returnResponse == "300":
+                break
+
+def request_and_limit_service2(response):
     print(f"Requested and got response {response}")
     
     badResponse = False

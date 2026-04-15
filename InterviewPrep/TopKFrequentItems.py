@@ -19,11 +19,35 @@ LOGS = [
 ]
 
 def log_translator(log):
+    logParts = log.split(" ", 3)
+    logService = logParts[1]
+    return logService
+
+def kMostCommon(logs, k):
+    logDict = defaultdict(deque)
+    kMostCommonServices = []
+    for log in logs:
+        curLogService = log_translator(log)
+
+        if curLogService in logDict:
+            logDict[curLogService] += 1
+        else: 
+            logDict[curLogService] = 1
+    
+    # Sort the dict
+    sortedLogDict = dict(sorted(logDict.items(), key=lambda x:x[1], reverse=False))
+
+    for i in range(k):
+        kMostCommonServices.append(sortedLogDict.popitem())
+
+    return kMostCommonServices
+
+def log_translator2(log):
     parts = log.split(" ", 2)
     logService = parts[1]
     return logService
 
-def kMostCommon(logs, k):
+def kMostCommon2(logs, k):
     itemDict = {}
     for log in logs:
         logService = log_translator(log)

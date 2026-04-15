@@ -1,0 +1,7 @@
+services:
+  auth-service:
+    image: auth:v2
+    replicas: 2
+  payment-service:
+    image: payment:v2
+    replicas: 2
