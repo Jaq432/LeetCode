@@ -17,6 +17,20 @@ Explanation: The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We ret
 '''
 
 def twoSum(numbers: list[int], target: int) -> list[int]:
+    numbersLen = len(numbers)
+    leftPointer = 0
+    rightPointer = numbersLen-1
+    while leftPointer < rightPointer:
+        if numbers[leftPointer] + numbers[rightPointer] < target:
+            leftPointer += 1
+        if numbers[leftPointer] + numbers[rightPointer] > target:
+            rightPointer -= 1
+        if numbers[leftPointer] + numbers[rightPointer] == target:
+            return [leftPointer+1, rightPointer+1]
+    return [0,0]
+
+
+def twoSum3(numbers: list[int], target: int) -> list[int]:
     lenNum = len(numbers)
     pointer1 = 0
     pointer2 = lenNum-1

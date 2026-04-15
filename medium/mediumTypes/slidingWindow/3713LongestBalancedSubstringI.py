@@ -8,6 +8,19 @@ Return the length of the longest balanced substring of s.
 from collections import defaultdict
 
 def longestBalanced(s: str) -> int:
+    longestLength = 0
+    sLen = len(s)
+    for i in range(sLen):
+        currentString = defaultdict(int)
+        currentLen = 0
+        for j in range(i, sLen):
+            currentLen += 1
+            currentString[s[j]] += 1
+            if len(set(currentString.values())) == 1:
+                longestLength = max(longestLength, currentLen)
+    return longestLength
+
+def longestBalanced4(s: str) -> int:
     lenS = len(s)
     longestSubstring = 0
     for i in range(lenS):
