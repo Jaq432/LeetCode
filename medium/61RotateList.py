@@ -14,7 +14,7 @@ def rotateRight(head: [ListNode], k: int) -> [ListNode]:
     tail = head
 
     # Get length of the list
-    length = 0
+    length = 1
     while tail.next:
         tail = tail.next
         length += 1
@@ -22,7 +22,7 @@ def rotateRight(head: [ListNode], k: int) -> [ListNode]:
     # Tail is now at the end of the list
 
     # Calculate steps to rotation
-    stepsToRot = k % length
+    stepsToRot = k % length - 1
 
     if stepsToRot == 0:
         return head
