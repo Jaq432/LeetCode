@@ -1,12 +1,12 @@
-def countOccurrences(fileDir: str, pattern, chunkSize):
+'''def countOccurrences(fileDir: str, pattern, chunkSize):
     count = 0
     with open(fileDir, "r") as openFile:
         for line in openFile:
             count += line.count(pattern)
 
-    return count
+    return count'''
 
-'''
+
 # Tried to load by memory size
 def countOccurrences(fileDir: str, pattern, chunkSize):
     count = 0
@@ -22,15 +22,17 @@ def countOccurrences(fileDir: str, pattern, chunkSize):
             # Combine with previous tail
             combined = prev_chunk + chunk
 
+            combined = combined.replace("\n", "")
+
             count += combined.count(pattern)
 
             # Keep last part for overlap
             prev_chunk = combined[-overlap:]
     
     return count
-'''
+
 if __name__ == "__main__":
-    print(countOccurrences("CountOccurrencesInLargeFile.txt", "Filling", 1000))
+    print(countOccurrences("CountOccurrencesInLargeFile.txt", "about", 1000))
 
 # Generate the file
 #with open("CountOccurrencesInLargeFile.txt", "w") as openFile:
